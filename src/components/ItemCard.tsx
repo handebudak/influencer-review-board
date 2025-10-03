@@ -31,11 +31,6 @@ export default function ItemCard({ item }: ItemCardProps) {
     REJECTED: 'Reddedildi',
   };
 
-  const riskLabels: Record<RiskLevel, string> = {
-    LOW: 'Düşük',
-    MEDIUM: 'Orta',
-    HIGH: 'Yüksek',
-  };
 
   const getBorderColor = () => {
     switch (item.status) {
@@ -46,16 +41,6 @@ export default function ItemCard({ item }: ItemCardProps) {
     }
   };
 
-  const getRiskDotColor = () => {
-    // Nokta rengi, kartın status'üne göre aynı renk
-    switch (item.status) {
-      case 'NEW': return 'bg-[#6B7280]'; // Gri
-      case 'IN_REVIEW': return 'bg-[#6B7280]'; // Gri
-      case 'APPROVED': return 'bg-[#10B981]'; // Yeşil
-      case 'REJECTED': return 'bg-[#EF4444]'; // Kırmızı
-      default: return 'bg-[#6B7280]';
-    }
-  };
 
   const getStatusBadgeColor = () => {
     switch (item.status) {

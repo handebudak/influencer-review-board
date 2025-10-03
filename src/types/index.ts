@@ -48,7 +48,7 @@ export interface RiskRule {
   id: string;
   name: string;
   description: string;
-  condition: any; // JSON parsed
+  condition: Record<string, unknown>; // JSON parsed
   scoreImpact: number;
   isActive: boolean;
   priority: number;
@@ -59,7 +59,7 @@ export interface AuditLogEntry {
   itemId: string;
   userId: string;
   action: AuditAction;
-  changes: any; // JSON parsed
+  changes: Record<string, unknown>; // JSON parsed
   oldValue: string | null;
   newValue: string | null;
   createdAt: Date;

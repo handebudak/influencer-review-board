@@ -95,7 +95,7 @@ export async function PATCH(
     const action = validatedData.status ? 'STATUS_CHANGED' : 'UPDATED';
     await createAuditLog(
       item.id,
-      (session.user as any).id,
+      (session.user as { id: string }).id,
       action,
       validatedData,
       oldItem,

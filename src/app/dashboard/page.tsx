@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import StatCard from '@/components/StatCard';
 import type { ItemStatus, RiskLevel } from '@/types';
 
@@ -37,7 +36,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     applyFilters();
-  }, [items, filters]);
+  }, [items, filters, applyFilters]);
 
   const fetchItems = async () => {
     try {

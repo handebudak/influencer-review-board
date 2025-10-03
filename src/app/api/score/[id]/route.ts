@@ -56,7 +56,7 @@ export async function POST(
     // Create audit log
     await createAuditLog(
       updatedItem.id,
-      (session.user as any).id,
+      (session.user as { id: string }).id,
       'SCORE_CALCULATED',
       {
         score: riskResult.score,

@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
     const tag = searchParams.get('tag');
     const search = searchParams.get('search');
 
-    const where: any = {};
+    const where: Record<string, unknown> = {};
 
     if (status) where.status = status;
     if (riskLevel) where.riskLevel = riskLevel;
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
     const item = await prisma.item.create({
       data: {
         ...validatedData,
-        createdById: (session.user as any).id,
+        createdById: (session.user as { id: string }).id,
       },
       include: {
         createdBy: {
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     // Create audit log
     await createAuditLog(
       item.id,
-      (session.user as any).id,
+      (session.user as { id: string }).id,
       'CREATED',
       { item: validatedData }
     );

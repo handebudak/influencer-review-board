@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import type { ItemStatus, RiskLevel, AuditAction } from '@/types';
 
@@ -31,7 +31,7 @@ interface Item {
 interface AuditLog {
   id: string;
   action: AuditAction;
-  changes: any;
+  changes: Record<string, unknown>;
   createdAt: string;
   user: {
     name: string | null;
@@ -41,9 +41,7 @@ interface AuditLog {
 
 export default function ItemDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const [item, setItem] = useState<Item | null>(null);
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
 
@@ -51,7 +49,7 @@ export default function ItemDetailPage() {
     if (params.id) {
       fetchItem();
     }
-  }, [params.id]);
+  }, [params.id, fetchItem]);
 
   const fetchItem = async () => {
     try {

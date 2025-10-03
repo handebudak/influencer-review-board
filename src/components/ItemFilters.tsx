@@ -9,7 +9,7 @@ interface ItemFiltersProps {
     tag: string;
     search: string;
   };
-  onFilterChange: (filters: any) => void;
+  onFilterChange: (filters: Record<string, string>) => void;
   allTags: string[];
 }
 

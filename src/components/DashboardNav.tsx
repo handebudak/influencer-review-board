@@ -4,7 +4,7 @@ import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 
 interface DashboardNavProps {
-  user: any;
+  user: { name?: string | null; email?: string | null };
 }
 
 export default function DashboardNav({ user }: DashboardNavProps) {
