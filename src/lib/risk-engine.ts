@@ -7,8 +7,9 @@ export interface RiskCalculationInput {
   amount: number;
   followers: number;
   engagementRate: number;
+  storyEngagementRate: number;
+  avgLikes: number;
   brandName: string;
-  tags: string[];
 }
 
 export interface RiskCalculationResult {

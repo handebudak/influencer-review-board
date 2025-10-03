@@ -37,7 +37,19 @@ export default function DashboardPage() {
   }, []);
 
   useEffect(() => {
-    applyFilters();
+    const filtered = items.filter((item) => {
+      const matchesSearch = !filters.search || 
+        item.title.toLowerCase().includes(filters.search.toLowerCase()) ||
+        item.influencerName.toLowerCase().includes(filters.search.toLowerCase()) ||
+        item.brandName.toLowerCase().includes(filters.search.toLowerCase());
+
+      const matchesStatus = !filters.status || item.status === filters.status;
+      const matchesRisk = !filters.riskLevel || item.riskLevel === filters.riskLevel;
+
+      return matchesSearch && matchesStatus && matchesRisk;
+    });
+
+    setFilteredItems(filtered);
   }, [items, filters]);
 
   const fetchItems = async () => {
@@ -52,31 +64,6 @@ export default function DashboardPage() {
     }
   };
 
-  const applyFilters = () => {
-    if (!items || !Array.isArray(items)) return;
-    
-    let filtered = [...items];
-
-    if (filters.status) {
-      filtered = filtered.filter((item) => item.status === filters.status);
-    }
-
-    if (filters.riskLevel) {
-      filtered = filtered.filter((item) => item.riskLevel === filters.riskLevel);
-    }
-
-    if (filters.search) {
-      const searchLower = filters.search.toLowerCase();
-      filtered = filtered.filter(
-        (item) =>
-          item.title.toLowerCase().includes(searchLower) ||
-          item.influencerName.toLowerCase().includes(searchLower) ||
-          item.brandName.toLowerCase().includes(searchLower)
-      );
-    }
-
-    setFilteredItems(filtered);
-  };
 
   if (loading) {
     return (

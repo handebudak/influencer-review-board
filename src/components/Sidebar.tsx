@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 
 interface SidebarProps {
-  user: { name?: string | null; email?: string | null };
+  user?: { name?: string | null; email?: string | null };
 }
 
 export default function Sidebar({ user }: SidebarProps) {

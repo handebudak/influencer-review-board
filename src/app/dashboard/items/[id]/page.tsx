@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import type { ItemStatus, RiskLevel, AuditAction } from '@/types';
+import type { ItemStatus, RiskLevel } from '@/types';
 
 interface Item {
   id: string;
@@ -29,28 +29,12 @@ interface Item {
   };
 }
 
-interface AuditLog {
-  id: string;
-  action: AuditAction;
-  changes: Record<string, unknown>;
-  createdAt: string;
-  user: {
-    name: string | null;
-    email: string;
-  };
-}
 
 export default function ItemDetailPage() {
   const params = useParams();
   const [item, setItem] = useState<Item | null>(null);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
-
-  useEffect(() => {
-    if (params.id) {
-      fetchItem();
-    }
-  }, [params.id, fetchItem]);
 
   const fetchItem = useCallback(async () => {
     try {
@@ -64,6 +48,12 @@ export default function ItemDetailPage() {
       setLoading(false);
     }
   }, [params.id]);
+
+  useEffect(() => {
+    if (params.id) {
+      fetchItem();
+    }
+  }, [params.id, fetchItem]);
 
   const updateStatus = async (newStatus: ItemStatus) => {
     setUpdating(true);

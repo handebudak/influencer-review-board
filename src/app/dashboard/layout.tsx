@@ -35,9 +35,9 @@ export default function DashboardLayout({
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <Sidebar user={session.user} />
+      <Sidebar user={session?.user} />
       <div className="flex-1 flex flex-col overflow-hidden">
-        <DashboardHeader user={session.user} />
+        <DashboardHeader user={session?.user} />
         <main className="flex-1 p-8 overflow-auto">
           <div className="max-w-[1400px] mx-auto">
             {children}
