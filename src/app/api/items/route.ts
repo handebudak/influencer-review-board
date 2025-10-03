@@ -14,8 +14,9 @@ const createItemSchema = z.object({
   influencerHandle: z.string().min(2, 'Influencer handle gerekli'),
   followers: z.number().int().positive('Takipçi sayısı pozitif olmalı'),
   engagementRate: z.number().min(0).max(100, 'Engagement rate 0-100 arası olmalı'),
+  storyEngagementRate: z.number().min(0).max(100, 'Story engagement rate 0-100 arası olmalı'),
+  avgLikes: z.number().int().positive('Ortalama beğeni sayısı pozitif olmalı'),
   brandName: z.string().min(2, 'Marka adı gerekli'),
-  tags: z.array(z.string()).default([]),
 });
 
 // GET /api/items - List items with filters
@@ -29,14 +30,12 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
     const riskLevel = searchParams.get('riskLevel');
-    const tag = searchParams.get('tag');
     const search = searchParams.get('search');
 
     const where: Record<string, unknown> = {};
 
     if (status) where.status = status;
     if (riskLevel) where.riskLevel = riskLevel;
-    if (tag) where.tags = { has: tag };
     if (search) {
       where.OR = [
         { title: { contains: search, mode: 'insensitive' } },

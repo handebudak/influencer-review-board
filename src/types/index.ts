@@ -15,8 +15,9 @@ export interface Item {
   influencerHandle: string;
   followers: number;
   engagementRate: number;
+  storyEngagementRate: number;
+  avgLikes: number;
   brandName: string;
-  tags: string[];
   status: ItemStatus;
   riskScore: number | null;
   riskLevel: RiskLevel | null;
@@ -33,14 +34,14 @@ export interface CreateItemInput {
   influencerHandle: string;
   followers: number;
   engagementRate: number;
+  storyEngagementRate: number;
+  avgLikes: number;
   brandName: string;
-  tags: string[];
 }
 
 export interface ItemFilter {
   status?: ItemStatus;
   riskLevel?: RiskLevel;
-  tags?: string[];
   search?: string;
 }
 

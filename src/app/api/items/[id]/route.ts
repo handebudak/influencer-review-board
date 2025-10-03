@@ -10,7 +10,6 @@ const updateItemSchema = z.object({
   title: z.string().min(3).optional(),
   description: z.string().min(10).optional(),
   amount: z.number().positive().optional(),
-  tags: z.array(z.string()).optional(),
 });
 
 // GET /api/items/[id]

@@ -13,6 +13,8 @@ interface Item {
   influencerHandle: string;
   followers: number;
   engagementRate: number;
+  storyEngagementRate: number;
+  avgLikes: number;
   brandName: string;
   status: ItemStatus;
   riskScore: number | null;
@@ -36,7 +38,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     applyFilters();
-  }, [items, filters, applyFilters]);
+  }, [items, filters]);
 
   const fetchItems = async () => {
     try {
@@ -51,6 +53,8 @@ export default function DashboardPage() {
   };
 
   const applyFilters = () => {
+    if (!items || !Array.isArray(items)) return;
+    
     let filtered = [...items];
 
     if (filters.status) {
@@ -60,7 +64,6 @@ export default function DashboardPage() {
     if (filters.riskLevel) {
       filtered = filtered.filter((item) => item.riskLevel === filters.riskLevel);
     }
-
 
     if (filters.search) {
       const searchLower = filters.search.toLowerCase();

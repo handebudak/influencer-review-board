@@ -75,27 +75,43 @@ export function calculateRiskScore(input: RiskCalculationInput): RiskCalculation
     factors.push('Yeterli takipçi (>50K)');
   }
 
-  // Rule 5: High-risk categories (0-10 points)
-  const highRiskCategories = ['crypto', 'gambling', 'supplements', 'finance'];
-  const hasHighRiskTag = input.tags.some(tag =>
-    highRiskCategories.some(risk => tag.toLowerCase().includes(risk))
-  );
-  if (hasHighRiskTag) {
-    score += 10;
-    factors.push('Yüksek riskli kategori');
+  // Rule 5: Story engagement rate (0-15 points)
+  if (input.storyEngagementRate < 5.0) {
+    score += 15;
+    factors.push('Düşük story engagement (<5%)');
+  } else if (input.storyEngagementRate < 10.0) {
+    score += 8;
+    factors.push('Orta story engagement (5-10%)');
+  } else if (input.storyEngagementRate > 25.0) {
+    score += 5;
+    factors.push('Şüpheli yüksek story engagement (>25%)');
+  } else {
+    factors.push('Sağlıklı story engagement (10-25%)');
   }
 
-  // Rule 6: Unknown/suspicious brands (0-10 points)
+  // Rule 6: Follower/Like ratio (0-10 points)
+  const followerToLikeRatio = input.followers / input.avgLikes;
+  if (followerToLikeRatio > 100) {
+    score += 10;
+    factors.push('Şüpheli oran (>100:1 takipçi/beğeni)');
+  } else if (followerToLikeRatio > 50) {
+    score += 5;
+    factors.push('Düşük oran (50-100:1 takipçi/beğeni)');
+  } else {
+    factors.push('Sağlıklı oran (<50:1 takipçi/beğeni)');
+  }
+
+  // Rule 7: Unknown/suspicious brands (0-10 points)
   if (input.brandName.length < 3) {
     score += 10;
     factors.push('Bilinmeyen marka');
   }
 
-  // Determine risk level
+  // Determine risk level (updated for new max score of 110)
   let level: RiskLevel;
-  if (score <= 30) {
+  if (score <= 35) {
     level = 'LOW';
-  } else if (score <= 60) {
+  } else if (score <= 70) {
     level = 'MEDIUM';
   } else {
     level = 'HIGH';

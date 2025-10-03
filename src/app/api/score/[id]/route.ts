@@ -31,8 +31,9 @@ export async function POST(
       amount: item.amount,
       followers: item.followers,
       engagementRate: item.engagementRate,
+      storyEngagementRate: item.storyEngagementRate,
+      avgLikes: item.avgLikes,
       brandName: item.brandName,
-      tags: item.tags,
     });
 
     // Update item with risk score

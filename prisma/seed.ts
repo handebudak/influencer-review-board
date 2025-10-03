@@ -45,10 +45,10 @@ async function main() {
       priority: 2,
     },
     {
-      name: 'High-Risk Category',
-      description: 'Crypto, gambling, supplements are high risk',
-      condition: JSON.stringify({ field: 'tags', operator: 'includes', value: ['crypto', 'gambling'] }),
-      scoreImpact: 10,
+      name: 'Story Engagement Risk',
+      description: 'Low story engagement rate is risky',
+      condition: JSON.stringify({ field: 'storyEngagementRate', operator: '<', value: 5.0 }),
+      scoreImpact: 15,
       priority: 3,
     },
   ];
@@ -74,8 +74,9 @@ async function main() {
       influencerHandle: '@fashionista_emma',
       followers: 250000,
       engagementRate: 4.2,
+      storyEngagementRate: 12.5,
+      avgLikes: 8500,
       brandName: 'Nike',
-      tags: ['Fashion', 'Sportswear', 'Lifestyle'],
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 45 * 60 * 1000), // 45 dakika önce
@@ -89,7 +90,8 @@ async function main() {
       followers: 180000,
       engagementRate: 5.8,
       brandName: 'HelloFresh',
-      tags: ['Food', 'Lifestyle', 'Vegan'],
+      storyEngagementRate: 15.2,
+      avgLikes: 6200,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 12 * 60 * 60 * 1000), // 12 saat önce
@@ -103,7 +105,8 @@ async function main() {
       followers: 50000,
       engagementRate: 1.2,
       brandName: 'Unknown Crypto Exchange',
-      tags: ['Crypto', 'Finance', 'Trading'],
+      storyEngagementRate: 8.5,
+      avgLikes: 4200,
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 gün önce
@@ -117,7 +120,8 @@ async function main() {
       followers: 420000,
       engagementRate: 6.5,
       brandName: 'Sephora',
-      tags: ['Beauty', 'Makeup', 'Tutorial'],
+      storyEngagementRate: 22.1,
+      avgLikes: 12000,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 gün önce
@@ -131,7 +135,8 @@ async function main() {
       followers: 8000,
       engagementRate: 0.8,
       brandName: 'XYZ',
-      tags: ['Supplements', 'Health'],
+      storyEngagementRate: 3.2,
+      avgLikes: 1800,
       status: 'REJECTED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // 10 gün önce
@@ -145,7 +150,8 @@ async function main() {
       followers: 520000,
       engagementRate: 7.3,
       brandName: 'Apple',
-      tags: ['Technology', 'Gadgets', 'Review'],
+      storyEngagementRate: 18.5,
+      avgLikes: 9500,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 30 * 60 * 1000), // 30 dakika önce
@@ -159,7 +165,8 @@ async function main() {
       followers: 380000,
       engagementRate: 5.4,
       brandName: 'Adidas',
-      tags: ['Fitness', 'Sportswear', 'Health'],
+      storyEngagementRate: 14.8,
+      avgLikes: 7200,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 saat önce
@@ -173,7 +180,8 @@ async function main() {
       followers: 125000,
       engagementRate: 4.8,
       brandName: 'Spotify',
-      tags: ['Music', 'Entertainment', 'Lifestyle'],
+      storyEngagementRate: 11.3,
+      avgLikes: 5800,
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 2 * 60 * 1000), // 2 dakika önce
@@ -187,7 +195,8 @@ async function main() {
       followers: 610000,
       engagementRate: 6.9,
       brandName: 'Tesla',
-      tags: ['Automotive', 'Technology', 'Review'],
+      storyEngagementRate: 16.7,
+      avgLikes: 8800,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000), // Dün
@@ -201,7 +210,8 @@ async function main() {
       followers: 215000,
       engagementRate: 5.2,
       brandName: 'Starbucks',
-      tags: ['Food', 'Beverage', 'Lifestyle'],
+      storyEngagementRate: 13.4,
+      avgLikes: 6400,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 gün önce
@@ -215,7 +225,8 @@ async function main() {
       followers: 95000,
       engagementRate: 4.5,
       brandName: 'Amazon',
-      tags: ['Books', 'Education', 'Lifestyle'],
+      storyEngagementRate: 9.8,
+      avgLikes: 3900,
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 15 * 60 * 1000), // 15 dakika önce
@@ -229,7 +240,8 @@ async function main() {
       followers: 445000,
       engagementRate: 7.1,
       brandName: 'GoPro',
-      tags: ['Travel', 'Adventure', 'Photography'],
+      storyEngagementRate: 19.6,
+      avgLikes: 11200,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 8 * 60 * 60 * 1000), // 8 saat önce
@@ -243,7 +255,8 @@ async function main() {
       followers: 720000,
       engagementRate: 6.3,
       brandName: 'Samsung',
-      tags: ['Technology', 'Gadgets', 'News'],
+      storyEngagementRate: 12.1,
+      avgLikes: 5600,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 gün önce
@@ -257,7 +270,8 @@ async function main() {
       followers: 310000,
       engagementRate: 5.9,
       brandName: 'Zara',
-      tags: ['Fashion', 'Style', 'Lifestyle'],
+      storyEngagementRate: 17.3,
+      avgLikes: 9200,
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 1 * 60 * 60 * 1000), // 1 saat önce
@@ -271,7 +285,8 @@ async function main() {
       followers: 485000,
       engagementRate: 8.2,
       brandName: 'PlayStation',
-      tags: ['Gaming', 'Entertainment', 'Technology'],
+      storyEngagementRate: 21.4,
+      avgLikes: 13500,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 saat önce
@@ -285,7 +300,8 @@ async function main() {
       followers: 275000,
       engagementRate: 6.1,
       brandName: 'IKEA',
-      tags: ['Home', 'Decor', 'DIY'],
+      storyEngagementRate: 15.7,
+      avgLikes: 7800,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // 7 gün önce
@@ -299,7 +315,8 @@ async function main() {
       followers: 25000,
       engagementRate: 0.5,
       brandName: 'BetNow123',
-      tags: ['Gambling', 'Casino'],
+      storyEngagementRate: 2.1,
+      avgLikes: 900,
       status: 'REJECTED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000), // 14 gün önce
@@ -313,7 +330,8 @@ async function main() {
       followers: 195000,
       engagementRate: 5.3,
       brandName: 'H&M',
-      tags: ['Fashion', 'Sustainable', 'Lifestyle'],
+      storyEngagementRate: 14.2,
+      avgLikes: 6900,
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 20 * 60 * 1000), // 20 dakika önce
@@ -327,7 +345,8 @@ async function main() {
       followers: 680000,
       engagementRate: 7.8,
       brandName: 'Airbnb',
-      tags: ['Travel', 'Adventure', 'Lifestyle'],
+      storyEngagementRate: 16.9,
+      avgLikes: 8400,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 18 * 60 * 60 * 1000), // 18 saat önce
@@ -341,7 +360,8 @@ async function main() {
       followers: 340000,
       engagementRate: 6.7,
       brandName: 'Nintendo',
-      tags: ['Gaming', 'Technology', 'Review'],
+      storyEngagementRate: 20.3,
+      avgLikes: 12800,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000), // 9 gün önce
@@ -355,7 +375,8 @@ async function main() {
       followers: 15000,
       engagementRate: 0.3,
       brandName: 'SlimFast Pro',
-      tags: ['Supplements', 'Health', 'Fitness'],
+      storyEngagementRate: 4.8,
+      avgLikes: 2100,
       status: 'REJECTED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000), // 20 gün önce
@@ -369,7 +390,8 @@ async function main() {
       followers: 420000,
       engagementRate: 5.8,
       brandName: 'Canon',
-      tags: ['Photography', 'Tutorial', 'Technology'],
+      storyEngagementRate: 18.7,
+      avgLikes: 9800,
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000), // 3 saat önce
@@ -383,7 +405,8 @@ async function main() {
       followers: 385000,
       engagementRate: 6.4,
       brandName: 'Peloton',
-      tags: ['Fitness', 'Health', 'Lifestyle'],
+      storyEngagementRate: 13.6,
+      avgLikes: 6100,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 36 * 60 * 60 * 1000), // 1.5 gün önce
@@ -397,7 +420,8 @@ async function main() {
       followers: 220000,
       engagementRate: 7.5,
       brandName: 'Lego',
-      tags: ['Toys', 'Family', 'Education'],
+      storyEngagementRate: 11.9,
+      avgLikes: 4700,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 gün önce
@@ -411,7 +435,8 @@ async function main() {
       followers: 165000,
       engagementRate: 5.1,
       brandName: 'Dyson',
-      tags: ['Home', 'Appliances', 'Lifestyle'],
+      storyEngagementRate: 10.4,
+      avgLikes: 3800,
       status: 'NEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 8 * 60 * 1000), // 8 dakika önce
@@ -425,7 +450,8 @@ async function main() {
       followers: 12000,
       engagementRate: 0.2,
       brandName: 'ForexGuru Pro',
-      tags: ['Finance', 'Trading', 'Investment'],
+      storyEngagementRate: 7.2,
+      avgLikes: 2900,
       status: 'REJECTED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000), // 25 gün önce
@@ -439,7 +465,8 @@ async function main() {
       followers: 510000,
       engagementRate: 7.9,
       brandName: 'Patagonia',
-      tags: ['Outdoor', 'Adventure', 'Sustainable'],
+      storyEngagementRate: 15.8,
+      avgLikes: 7600,
       status: 'IN_REVIEW' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 10 * 60 * 60 * 1000), // 10 saat önce
@@ -453,7 +480,8 @@ async function main() {
       followers: 290000,
       engagementRate: 6.2,
       brandName: 'Disney+',
-      tags: ['Entertainment', 'Movies', 'Review'],
+      storyEngagementRate: 12.7,
+      avgLikes: 5200,
       status: 'APPROVED' as const,
       createdById: user.id,
       createdAt: new Date(Date.now() - 11 * 24 * 60 * 60 * 1000), // 11 gün önce
@@ -472,8 +500,9 @@ async function main() {
       amount: item.amount,
       followers: item.followers,
       engagementRate: item.engagementRate,
+      storyEngagementRate: item.storyEngagementRate,
+      avgLikes: item.avgLikes,
       brandName: item.brandName,
-      tags: item.tags,
     });
 
     await prisma.item.update({

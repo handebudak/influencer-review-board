@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import type { ItemStatus, RiskLevel, AuditAction } from '@/types';
@@ -14,8 +14,9 @@ interface Item {
   influencerHandle: string;
   followers: number;
   engagementRate: number;
+  storyEngagementRate: number;
+  avgLikes: number;
   brandName: string;
-  tags: string[];
   status: ItemStatus;
   riskScore: number | null;
   riskLevel: RiskLevel | null;
@@ -51,7 +52,7 @@ export default function ItemDetailPage() {
     }
   }, [params.id, fetchItem]);
 
-  const fetchItem = async () => {
+  const fetchItem = useCallback(async () => {
     try {
       const response = await fetch(`/api/items/${params.id}`);
       const data = await response.json();
@@ -62,7 +63,7 @@ export default function ItemDetailPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [params.id]);
 
   const updateStatus = async (newStatus: ItemStatus) => {
     setUpdating(true);
@@ -206,18 +207,6 @@ export default function ItemDetailPage() {
           <p className="text-gray-700">{item.description}</p>
         </div>
 
-        {item.tags.length > 0 && (
-          <div className="mb-6">
-            <h3 className="text-sm font-medium text-gray-500 mb-2">Categories</h3>
-            <div className="flex flex-wrap gap-2">
-              {item.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
 
         <div className="border-t border-gray-100 pt-6 space-y-4">
           <h3 className="text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">Actions</h3>

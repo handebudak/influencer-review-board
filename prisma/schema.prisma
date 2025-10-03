@@ -91,23 +91,24 @@ enum RiskLevel {
 }
 
 model Item {
-  id               String     @id @default(cuid())
-  title            String
-  description      String     @db.Text
-  amount           Float
-  influencerName   String     @map("influencer_name")
-  influencerHandle String     @map("influencer_handle")
-  followers        Int
-  engagementRate   Float      @map("engagement_rate")
-  brandName        String     @map("brand_name")
-  tags             String[]   @default([])
-  status           ItemStatus @default(NEW)
-  riskScore        Int?       @map("risk_score")
-  riskLevel        RiskLevel? @map("risk_level")
-  createdAt        DateTime   @default(now()) @map("created_at")
-  updatedAt        DateTime   @updatedAt @map("updated_at")
-  createdBy        User       @relation(fields: [createdById], references: [id])
-  createdById      String     @map("created_by_id")
+  id                  String     @id @default(cuid())
+  title               String
+  description         String     @db.Text
+  amount              Float
+  influencerName      String     @map("influencer_name")
+  influencerHandle    String     @map("influencer_handle")
+  followers           Int
+  engagementRate      Float      @map("engagement_rate")
+  storyEngagementRate Float      @map("story_engagement_rate")
+  avgLikes            Int        @map("avg_likes")
+  brandName           String     @map("brand_name")
+  status              ItemStatus @default(NEW)
+  riskScore           Int?       @map("risk_score")
+  riskLevel           RiskLevel? @map("risk_level")
+  createdAt           DateTime   @default(now()) @map("created_at")
+  updatedAt           DateTime   @updatedAt @map("updated_at")
+  createdBy           User       @relation(fields: [createdById], references: [id])
+  createdById         String     @map("created_by_id")
 
   auditLogs AuditLog[]
 
