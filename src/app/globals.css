@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom dropdown colors - remove blue highlights */
+select {
+  accent-color: #64748b; /* slate-500 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+select option {
+  background-color: white;
+  color: #0f172a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark select option {
+  background-color: #0f172a;
+  color: #f1f5f9;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+select option:checked,
+select option:checked:hover {
+  background-color: #f1f5f9 !important; /* slate-100 */
+  color: #0f172a !important; /* slate-900 */
+  background-image: none !important;
+}
+
+.dark select option:checked,
+.dark select option:checked:hover {
+  background-color: #334155 !important; /* slate-700 */
+  color: #f1f5f9 !important;
+  background-image: none !important;
+}
+
+select option:hover {
+  background-color: #e2e8f0 !important; /* slate-200 */
+  color: #0f172a !important;
+}
+
+.dark select option:hover {
+  background-color: #475569 !important; /* slate-600 */
+  color: #f1f5f9 !important;
+}
+
+/* Remove blue focus outline */
+select:focus option:checked {
+  background: linear-gradient(#f1f5f9, #f1f5f9) !important;
+  background-color: #f1f5f9 !important;
+}
+
+.dark select:focus option:checked {
+  background: linear-gradient(#334155, #334155) !important;
+  background-color: #334155 !important;
+}
+
+/* Input focus states - remove blue */
+input:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px #e2e8f0 !important; /* slate-200 ring */
+}
+
+.dark input:focus,
+.dark select:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px #475569 !important; /* slate-600 ring */
 }

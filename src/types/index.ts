@@ -1,0 +1,67 @@
+// TypeScript Types ve Interfaces
+
+import { ItemStatus, UserRole, AuditAction } from '@prisma/client';
+import { RiskLevel } from '@/lib/risk-engine';
+
+export type { ItemStatus, UserRole, AuditAction };
+export type { RiskLevel };
+
+export interface Item {
+  id: string;
+  title: string;
+  description: string;
+  amount: number;
+  influencerName: string;
+  influencerHandle: string;
+  followers: number;
+  engagementRate: number;
+  brandName: string;
+  tags: string[];
+  status: ItemStatus;
+  riskScore: number | null;
+  riskLevel: RiskLevel | null;
+  createdAt: Date;
+  updatedAt: Date;
+  createdById: string;
+}
+
+export interface CreateItemInput {
+  title: string;
+  description: string;
+  amount: number;
+  influencerName: string;
+  influencerHandle: string;
+  followers: number;
+  engagementRate: number;
+  brandName: string;
+  tags: string[];
+}
+
+export interface ItemFilter {
+  status?: ItemStatus;
+  riskLevel?: RiskLevel;
+  tags?: string[];
+  search?: string;
+}
+
+export interface RiskRule {
+  id: string;
+  name: string;
+  description: string;
+  condition: any; // JSON parsed
+  scoreImpact: number;
+  isActive: boolean;
+  priority: number;
+}
+
+export interface AuditLogEntry {
+  id: string;
+  itemId: string;
+  userId: string;
+  action: AuditAction;
+  changes: any; // JSON parsed
+  oldValue: string | null;
+  newValue: string | null;
+  createdAt: Date;
+}
+
