@@ -197,25 +197,25 @@ export default function DashboardPage() {
               </div>
             ) : (
               <div className="overflow-x-auto">
-              <table className="w-full min-w-[640px]">
+              <table className="w-full">
                 <thead className="bg-slate-50 border-b border-gray-200">
                   <tr>
-                    <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-1.5 sm:px-4 py-1.5 sm:py-3 text-[9px] sm:text-xs font-medium text-gray-500 uppercase tracking-tight sm:tracking-wider">
                       Influencer
                     </th>
-                       <th className="text-left px-2 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                         Application
+                       <th className="text-left px-1 sm:px-2 py-1.5 sm:py-3 text-[9px] sm:text-xs font-medium text-gray-500 uppercase tracking-tight sm:tracking-wider hidden md:table-cell">
+                         App
                        </th>
-                       <th className="text-left px-2 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                       <th className="text-left px-1 sm:px-2 py-1.5 sm:py-3 text-[9px] sm:text-xs font-medium text-gray-500 uppercase tracking-tight sm:tracking-wider hidden lg:table-cell">
                          Brand
                        </th>
-                       <th className="text-right px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                       <th className="text-right px-1.5 sm:px-4 py-1.5 sm:py-3 text-[9px] sm:text-xs font-medium text-gray-500 uppercase tracking-tight sm:tracking-wider">
                          Amount
                        </th>
-                       <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                       <th className="text-left px-1.5 sm:px-4 py-1.5 sm:py-3 text-[9px] sm:text-xs font-medium text-gray-500 uppercase tracking-tight sm:tracking-wider hidden sm:table-cell">
                          Date
                        </th>
-                       <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                       <th className="text-left px-1.5 sm:px-6 py-1.5 sm:py-3 text-[9px] sm:text-xs font-medium text-gray-500 uppercase tracking-tight sm:tracking-wider">
                          Status
                        </th>
                   </tr>
@@ -260,45 +260,45 @@ export default function DashboardPage() {
                       className="hover:bg-slate-50 cursor-pointer transition-colors"
                     >
                       {/* Influencer with Avatar */}
-                      <td className="px-4 py-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xs font-semibold">{initials}</span>
+                      <td className="px-1.5 sm:px-4 py-1.5 sm:py-3">
+                        <div className="flex items-center gap-1 sm:gap-3">
+                          <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-[9px] sm:text-xs font-semibold">{initials}</span>
                           </div>
                           <div className="min-w-0">
-                            <div className="text-sm font-medium text-gray-900 truncate">{item.influencerName}</div>
-                            <div className="text-xs text-gray-500 truncate">{item.influencerHandle}</div>
+                            <div className="text-[10px] sm:text-sm font-medium text-gray-900 truncate">{item.influencerName}</div>
+                            <div className="text-[9px] sm:text-xs text-gray-500 truncate hidden sm:block">{item.influencerHandle}</div>
                           </div>
                         </div>
                       </td>
 
                       {/* Başvuru */}
-                      <td className="px-2 py-3">
-                        <div className="text-sm text-gray-900 dark:text-gray-100 font-medium truncate max-w-xs">{item.title}</div>
+                      <td className="px-1 sm:px-2 py-1.5 sm:py-3 hidden md:table-cell">
+                        <div className="text-[10px] sm:text-sm text-gray-900 dark:text-gray-100 font-medium truncate max-w-[120px] sm:max-w-xs">{item.title}</div>
                       </td>
 
                       {/* Marka */}
-                      <td className="px-2 py-3">
-                        <div className="text-sm text-gray-700 dark:text-gray-300">{item.brandName}</div>
+                      <td className="px-1 sm:px-2 py-1.5 sm:py-3 hidden lg:table-cell">
+                        <div className="text-[10px] sm:text-sm text-gray-700 dark:text-gray-300 truncate">{item.brandName}</div>
                       </td>
 
                       {/* Tutar */}
-                      <td className="px-4 py-3 text-right">
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                      <td className="px-1.5 sm:px-4 py-1.5 sm:py-3 text-right">
+                        <div className="text-[10px] sm:text-sm font-semibold text-gray-900 dark:text-gray-100">
                           ${item.amount >= 1000 ? `${(item.amount / 1000).toFixed(1)}K` : item.amount}
                         </div>
                       </td>
 
                       {/* Tarih */}
-                      <td className="px-4 py-3">
-                        <div className="text-sm text-gray-600 dark:text-gray-400">{timeAgo}</div>
+                      <td className="px-1.5 sm:px-4 py-1.5 sm:py-3 hidden sm:table-cell">
+                        <div className="text-[9px] sm:text-sm text-gray-600 dark:text-gray-400 truncate">{timeAgo}</div>
                       </td>
 
                       {/* Durum - Dot + Text */}
-                      <td className="px-6 py-3">
-                        <div className="flex items-center gap-2">
-                          <span className={`w-2 h-2 rounded-full ${status.dot}`}></span>
-                          <span className={`text-sm font-medium ${status.text} whitespace-nowrap`}>{status.label}</span>
+                      <td className="px-1.5 sm:px-6 py-1.5 sm:py-3">
+                        <div className="flex items-center gap-0.5 sm:gap-2">
+                          <span className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full ${status.dot}`}></span>
+                          <span className={`text-[9px] sm:text-sm font-medium ${status.text} whitespace-nowrap`}>{status.label}</span>
                         </div>
                       </td>
                     </tr>
