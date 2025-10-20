@@ -1,37 +1,35 @@
 # Influencer Review Board - Brand Deal Review Platform
 
-**🎓 Demo Case Study Project**: A mini deal/issue review system with automated risk scoring for managing influencer brand deal applications.
+A mini deal/issue review system with automated risk scoring for managing influencer brand deal applications.
 
----
-
-## 📝 Project Overview
+## Project Overview
 
 **Influencer Review Board** is a B2B SaaS platform designed for influencer marketing agencies to review and manage brand deal submissions. The system provides automated risk assessment and a structured approval workflow.
 
-### ✨ Key Features
+### Key Features
 
-#### 🔐 Authentication & Security
+#### Authentication & Security
 - Email/password authentication
 - GitHub OAuth integration
 - Session management with NextAuth.js
 - Password hashing with bcrypt
 - Protected routes with middleware
 
-#### 📊 Deal Management
+#### Deal Management
 - **Dashboard** with statistics (Total Applications, New, Approved, High Risk)
 - **Table view** for easy browsing of all applications
 - **Detailed view** for each application with all information
 - **Filter & Search**: By status, risk level, or keyword
 - **Real-time updates** when status changes
 
-#### ⚠️ Automated Risk Scoring
+#### Automated Risk Scoring
 - Rule-based risk calculation engine
 - Scores from 0-100 based on multiple factors
 - Visual risk indicators (Low/Medium/High)
 - Automatic calculation on submission
 - Manual recalculation available
 
-#### 📈 Status Workflow
+#### Status Workflow
 ```
 NEW → IN_REVIEW → APPROVED/REJECTED
 ```
@@ -39,7 +37,7 @@ NEW → IN_REVIEW → APPROVED/REJECTED
 - Clear visual status indicators
 - Action buttons based on current status
 
-#### 🎨 Modern UI/UX
+#### Modern UI/UX
 - Clean, professional design
 - Responsive layout (desktop & mobile)
 - Intuitive navigation
@@ -48,9 +46,9 @@ NEW → IN_REVIEW → APPROVED/REJECTED
 
 ---
 
-## 🚀 Working Features (Demo Version)
+## Working Features (Demo Version)
 
-### ✅ Fully Functional
+### Fully Functional
 1. **Login/Logout**
    - Email: `admin@test.com` / Password: `password`
    - Gmail OAuth button (visual only - requires configuration)
@@ -90,7 +88,7 @@ NEW → IN_REVIEW → APPROVED/REJECTED
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Category | Technology |
 |----------|------------|
@@ -105,7 +103,7 @@ NEW → IN_REVIEW → APPROVED/REJECTED
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 reviewboard/
@@ -143,7 +141,7 @@ reviewboard/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -206,7 +204,7 @@ npm run dev
 
 ---
 
-## ⚙️ Risk Scoring Engine
+## Risk Scoring Engine
 
 The system automatically calculates risk scores (0-100) based on multiple factors:
 
@@ -221,9 +219,9 @@ The system automatically calculates risk scores (0-100) based on multiple factor
 
 ### Risk Levels
 
-- 🟢 **LOW RISK (0-30)**: Safe to approve quickly
-- 🟡 **MEDIUM RISK (31-60)**: Needs careful review
-- 🔴 **HIGH RISK (61-100)**: Requires thorough investigation
+- **LOW RISK (0-30)**: Safe to approve quickly
+- **MEDIUM RISK (31-60)**: Needs careful review
+- **HIGH RISK (61-100)**: Requires thorough investigation
 
 ### Example Calculations
 
@@ -233,7 +231,7 @@ The system automatically calculates risk scores (0-100) based on multiple factor
 
 ---
 
-## 📊 Database Schema
+## Database Schema
 
 ### Main Models
 
@@ -262,9 +260,9 @@ The system automatically calculates risk scores (0-100) based on multiple factor
 
 ---
 
-## 🎯 User Workflows
+## User Workflows
 
-### 1️⃣ Review Brand Deal Applications
+### Review Brand Deal Applications
 
 1. Login to dashboard
 2. Browse applications in table view
@@ -275,7 +273,7 @@ The system automatically calculates risk scores (0-100) based on multiple factor
 7. Click "Approve" or "Reject"
 8. Application moves to final status
 
-### 2️⃣ Filter & Search
+### Filter & Search
 
 1. Use dropdowns to filter by:
    - Status (All/New/In Review/Approved/Rejected)
@@ -286,7 +284,7 @@ The system automatically calculates risk scores (0-100) based on multiple factor
 
 ---
 
-## 📦 Available Scripts
+## Available Scripts
 
 ```bash
 npm run dev          # Start development server (port 3000)
@@ -303,21 +301,21 @@ npm run db:studio    # Open Prisma Studio GUI
 
 ---
 
-## 🎨 Demo Data
+## Demo Data
 
 The seed script (`npm run db:seed`) creates:
 
-- ✅ **1 Admin User**
+- **1 Admin User**
   - Email: `admin@test.com`
   - Password: `password`
   - Name: Admin User
 
-- ✅ **3 Risk Scoring Rules**
+- **3 Risk Scoring Rules**
   - Amount-based risk
   - Engagement-based risk
   - Category-based risk
 
-- ✅ **28 Sample Brand Deals**
+- **28 Sample Brand Deals**
   - Various influencers (Jenny Williams, Tom Anderson, etc.)
   - Different brands (Spotify, Amazon, Apple, Nike, etc.)
   - Mixed risk levels (LOW, MEDIUM, HIGH)
@@ -328,7 +326,7 @@ The seed script (`npm run db:seed`) creates:
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Items (Brand Deals)
 - `GET /api/items` - List all items
@@ -347,9 +345,9 @@ The seed script (`npm run db:seed`) creates:
 
 ---
 
-## 🔐 Security Features
+## Security Features
 
-✅ **Implemented:**
+**Implemented:**
 - Password hashing with bcrypt
 - HTTP-only cookies for sessions
 - CSRF protection (NextAuth)
@@ -358,7 +356,7 @@ The seed script (`npm run db:seed`) creates:
 - Middleware for route protection
 - Secure environment variables
 
-⚠️ **Demo Limitations:**
+**Demo Limitations:**
 - No rate limiting
 - No account lockout
 - No 2FA
@@ -367,7 +365,7 @@ The seed script (`npm run db:seed`) creates:
 
 ---
 
-## 🚢 Deployment
+## Deployment
 
 ### Recommended: Vercel
 
@@ -388,15 +386,15 @@ All support Next.js. Just add environment variables and deploy.
 
 ---
 
-## 🧪 Testing Checklist
+## Testing Checklist
 
-### ✅ Authentication
+### Authentication
 - [ ] Login with email/password
 - [ ] Logout
 - [ ] Session persists on refresh
 - [ ] Redirect to login when not authenticated
 
-### ✅ Dashboard
+### Dashboard
 - [ ] View all applications
 - [ ] Statistics cards show correct numbers
 - [ ] Filter by status
@@ -405,7 +403,7 @@ All support Next.js. Just add environment variables and deploy.
 - [ ] Search by keyword
 - [ ] Clear filters button works
 
-### ✅ Application Detail
+### Application Detail
 - [ ] View all information
 - [ ] Risk score displays correctly
 - [ ] Status badge shows correct color
@@ -418,7 +416,7 @@ All support Next.js. Just add environment variables and deploy.
 
 ---
 
-## 💡 Architecture Decisions
+## Architecture Decisions
 
 1. **Risk Engine**: Rule-based system (simple, transparent, extensible)
 2. **Database**: PostgreSQL for ACID compliance and complex queries
@@ -428,44 +426,44 @@ All support Next.js. Just add environment variables and deploy.
 
 ---
 
-## 📝 Case Study Context
+## Case Study Context
 
 ### Scenario
 An influencer marketing agency receives 20-30 brand deal submissions daily. Manual review is:
-- ⏱️ Time-consuming
-- 🎲 Inconsistent (different reviewers apply different standards)
-- 📋 Untracked (no audit trail)
+- Time-consuming
+- Inconsistent (different reviewers apply different standards)
+- Untracked (no audit trail)
 
 ### Solution
 **Influencer Review Board** automates initial risk assessment, provides structured review workflow, and maintains complete audit trail.
 
 ### Benefits
-- ⏱️ **60% faster** initial review
-- 📊 **Consistent** risk evaluation across all reviewers
-- 📋 **Complete audit trail** for compliance
-- 🎯 **Clear workflow** reduces errors
-- 🔍 **Easy filtering** finds high-priority items quickly
+- **60% faster** initial review
+- **Consistent** risk evaluation across all reviewers
+- **Complete audit trail** for compliance
+- **Clear workflow** reduces errors
+- **Easy filtering** finds high-priority items quickly
 
 ---
 
-## 🎓 Learning Outcomes
+## Learning Outcomes
 
 This case study demonstrates:
 
-✅ Full-stack Next.js 15 development (App Router)  
-✅ TypeScript for type safety  
-✅ Prisma ORM with PostgreSQL  
-✅ NextAuth.js authentication  
-✅ RESTful API design  
-✅ Rule-based decision engine  
-✅ Responsive UI with Tailwind CSS  
-✅ Real-time filtering and search  
-✅ Database schema design  
-✅ Audit logging patterns  
+- Full-stack Next.js 15 development (App Router)  
+- TypeScript for type safety  
+- Prisma ORM with PostgreSQL  
+- NextAuth.js authentication  
+- RESTful API design  
+- Rule-based decision engine  
+- Responsive UI with Tailwind CSS  
+- Real-time filtering and search  
+- Database schema design  
+- Audit logging patterns  
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 This is a case study project for educational purposes. Feel free to:
 - Explore the code
@@ -474,18 +472,16 @@ This is a case study project for educational purposes. Feel free to:
 
 ---
 
-## 📄 License
+## License
 
 MIT License - Free to use for educational purposes.
 
 ---
 
-## 📞 Support
+## Support
 
 For questions or issues, please refer to the documentation above or explore the code.
 
 ---
-
-**Built with ❤️ for KovanLab Case Study**
 
 *Demo Version - Not for production use*
