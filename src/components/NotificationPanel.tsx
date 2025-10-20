@@ -41,26 +41,29 @@ export default function NotificationPanel() {
   ];
 
   return (
-    <div className="hidden xl:block w-64 bg-white border-l border-gray-200 flex-shrink-0 sticky top-0 h-screen overflow-y-auto">
+    <div className="hidden xl:block w-64 bg-zinc-200 border-l border-zinc-300 flex-shrink-0 sticky top-0 h-screen overflow-y-auto">
       {/* Notifications */}
       <div className="p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Notifications</h3>
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-lg font-bold text-zinc-900">Notifications</h3>
+          <span className="text-xs bg-zinc-600 text-white px-2 py-1 rounded-full">3</span>
+        </div>
         <div className="space-y-3">
           {notifications.map((notif) => (
             <div
               key={notif.id}
-              className={`flex items-start gap-3 p-3 rounded-xl ${notif.bgColor} hover:shadow-md transition-all cursor-pointer`}
+              className="flex items-start gap-3 p-4 rounded-xl bg-zinc-100 hover:bg-zinc-200 transition-all cursor-pointer border border-zinc-200"
             >
-              <div className="w-8 h-8 flex items-center justify-center">
-                <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-8 h-8 flex items-center justify-center bg-zinc-200 rounded-lg">
+                <svg className="w-4 h-4 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-900 truncate">
+                <p className="text-sm font-semibold text-zinc-900 truncate">
                   {notif.title}
                 </p>
-                <p className="text-xs text-gray-500 mt-0.5">{notif.time}</p>
+                <p className="text-xs text-zinc-600 mt-1">{notif.time}</p>
               </div>
             </div>
           ))}

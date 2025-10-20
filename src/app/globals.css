@@ -50,15 +50,10 @@ select:focus option:checked {
   background-color: #334155 !important;
 }
 
-/* Input focus states - remove blue */
+/* Simple focus removal with Tailwind */
+select:focus,
 input:focus,
-select:focus {
+button:focus {
   outline: none !important;
-  box-shadow: 0 0 0 2px #e2e8f0 !important; /* slate-200 ring */
-}
-
-.dark input:focus,
-.dark select:focus {
-  outline: none !important;
-  box-shadow: 0 0 0 2px #475569 !important; /* slate-600 ring */
+  -webkit-focus-ring-color: transparent !important;
 }

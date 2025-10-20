@@ -34,11 +34,11 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="flex min-h-screen bg-zinc-200">
       <Sidebar user={session?.user} />
       <div className="flex-1 flex flex-col overflow-hidden">
         <DashboardHeader user={session?.user} />
-        <main className="flex-1 p-8 overflow-auto">
+        <main className="flex-1 p-8 overflow-auto bg-zinc-100">
           <div className="max-w-[1400px] mx-auto">
             {children}
           </div>
