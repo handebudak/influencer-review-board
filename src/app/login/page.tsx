@@ -42,24 +42,24 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-stone-50 px-4 py-8 sm:py-12">
-      <div className="max-w-md w-full bg-white p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 px-4 py-8 sm:py-12">
+      <div className="max-w-md w-full bg-zinc-800 p-6 sm:p-8 rounded-2xl shadow-2xl border border-zinc-700">
         <div className="text-center mb-6">
           <div className="flex items-center justify-center mb-3">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-slate-600 to-slate-800 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-zinc-600 to-zinc-700 rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-base sm:text-lg">IRB</span>
             </div>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-800 mb-1">
+          <h1 className="text-xl sm:text-2xl font-bold text-white mb-1">
             Influencer Review Board
           </h1>
-          <p className="text-xs sm:text-sm text-gray-500">Brand Deal Review Platform</p>
+          <p className="text-xs sm:text-sm text-zinc-400">Brand Deal Review Platform</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-3">
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold text-gray-500 mb-1.5">
+              <label htmlFor="email" className="block text-xs font-semibold text-zinc-300 mb-1.5">
                 Email
               </label>
               <input
@@ -68,13 +68,13 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2.5 bg-slate-50 border-0 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 hover:bg-slate-100 focus:bg-white focus:ring-2 focus:ring-slate-200 focus:outline-none transition-all"
-                placeholder="ornek@email.com"
+                className="w-full px-4 py-2.5 bg-zinc-700 border border-zinc-600 rounded-xl text-sm text-white placeholder:text-zinc-400 hover:bg-zinc-600 focus:bg-zinc-600 focus:ring-2 focus:ring-zinc-500 focus:border-zinc-500 focus:outline-none transition-all"
+                placeholder="example@email.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-xs font-semibold text-gray-500 mb-1.5">
+              <label htmlFor="password" className="block text-xs font-semibold text-zinc-300 mb-1.5">
                 Password
               </label>
               <input
@@ -83,14 +83,14 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2.5 bg-slate-50 border-0 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 hover:bg-slate-100 focus:bg-white focus:ring-2 focus:ring-slate-200 focus:outline-none transition-all"
+                className="w-full px-4 py-2.5 bg-zinc-700 border border-zinc-600 rounded-xl text-sm text-white placeholder:text-zinc-400 hover:bg-zinc-600 focus:bg-zinc-600 focus:ring-2 focus:ring-zinc-500 focus:border-zinc-500 focus:outline-none transition-all"
                 placeholder="••••••••"
               />
             </div>
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+            <div className="bg-red-900/20 border border-red-700 text-red-300 px-4 py-3 rounded-xl text-sm">
               {error}
             </div>
           )}
@@ -98,24 +98,24 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 px-4 bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+            className="w-full py-2.5 px-4 bg-gradient-to-r from-zinc-700 to-zinc-800 hover:from-zinc-600 hover:to-zinc-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
 
           <div className="relative my-4">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
+              <div className="w-full border-t border-zinc-600"></div>
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="px-2 bg-white text-gray-400">or</span>
+              <span className="px-2 bg-zinc-800 text-zinc-400">or</span>
             </div>
           </div>
 
           <button
             type="button"
             onClick={handleGitHubLogin}
-            className="w-full py-2.5 px-4 bg-white hover:bg-slate-50 text-gray-700 font-semibold rounded-xl border-2 border-slate-200 hover:border-slate-300 transition-all flex items-center justify-center gap-2 text-sm"
+            className="w-full py-2.5 px-4 bg-zinc-700 hover:bg-zinc-600 text-zinc-200 font-semibold rounded-xl border-2 border-zinc-600 hover:border-zinc-500 transition-all flex items-center justify-center gap-2 text-sm"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path fill="#EA4335" d="M5.26620003,9.76452941 C6.19878754,6.93863203 8.85444915,4.90909091 12,4.90909091 C13.6909091,4.90909091 15.2181818,5.50909091 16.4181818,6.49090909 L19.9090909,3 C17.7818182,1.14545455 15.0545455,0 12,0 C7.27006974,0 3.1977497,2.69829785 1.23999023,6.65002441 L5.26620003,9.76452941 Z"/>
@@ -127,9 +127,9 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <div className="text-center pt-4 border-t border-gray-100 mt-6">
-          <p className="text-xs text-gray-400 mb-1">Demo Account:</p>
-          <p className="text-xs font-semibold text-gray-600">admin@test.com / password</p>
+        <div className="text-center pt-4 border-t border-zinc-700 mt-6">
+          <p className="text-xs text-zinc-400 mb-1">Demo Account:</p>
+          <p className="text-xs font-semibold text-zinc-300">admin@test.com / password</p>
         </div>
       </div>
     </div>
