@@ -8,6 +8,7 @@ interface CustomSelectProps {
   options: { value: string; label: string }[];
   placeholder?: string;
   className?: string;
+  label?: string;
 }
 
 export default function CustomSelect({ 
@@ -15,7 +16,8 @@ export default function CustomSelect({
   onChange, 
   options, 
   placeholder = "Select...",
-  className = ""
+  className = "",
+  label
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState('');
@@ -44,6 +46,11 @@ export default function CustomSelect({
 
   return (
     <div className={`relative ${className}`} ref={selectRef}>
+      {label && (
+        <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+          {label}
+        </label>
+      )}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
